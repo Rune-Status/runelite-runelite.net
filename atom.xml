@@ -9,7 +9,1368 @@
   <link href="https://runelite.net" />
   <link href="https://runelite.net/atom.xml" rel="self" />
   <id>https://runelite.net/</id>
-  <updated>2021-04-25T21:23:01.167Z</updated>
+  <updated>2022-02-02T05:29:40.635Z</updated>
+  
+  <entry>
+    <id>https://runelite.net/blog/show/2021-12-16-1.8.7-Release</id>
+    <link href="https://runelite.net/blog/show/2021-12-16-1.8.7-Release" />
+    <title>1.8.7 Release</title>
+    <summary>Custom left click swap and ambient sounds mute</summary>
+    <updated>2021-12-16T19:00:00.000Z</updated>
+    <author>
+      <name>Adam</name>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml"><p>The menu swapper has a new option to configure the left click option on items, which works similar to the existing shift-click configuration.</p>
+<p><img src="/img/blog/1.8.7-Release/leftclickswap.png" alt="Leftclickswap" /></p>
+<p>Login and logout notifications can now be hidden per-friend by clicking the <code>Hide notifications</code> option on the friend.</p>
+<p><img src="/img/blog/1.8.7-Release/loginout.png" alt="Login notifications" /></p>
+<p>Chat channels can now show the number of online members in the channel.</p>
+<p><img src="/img/blog/1.8.7-Release/chatchannels.png" alt="Chat channels member count" /></p>
+<p>There are also several smaller improvements and bug fixes, including:</p>
+<ul>
+<li>The music plugin now has an additional option to mute ambient sounds, which affect passive object sounds such as from magic trees and furnaces.</li>
+<li>The grand exchange buy limit and active traded price has been adjusted to fit on the interface</li>
+<li>The mute button clickbox on the login screen is no longer the entire bottom right area of the client</li>
+<li>Character accents are now ignored when applying chat filters to messages</li>
+<li>The loot tracker now tracks Mahogany Homes supply crates</li>
+<li>The world hopper region filter now supports filters with multiple regions</li>
+<li>The screenshot plugin can now screenshot combat achievement task completions</li>
+<li>Tile indicators now has a separate color configuration for tile fill color</li>
+<li>The party plugin now has a button to join the previous party, as well as join party by id</li>
+<li>Timing for the woodcutting respawn timers has been corrected</li>
+<li>Inventory tags are now shown in the Chambers of Xeric storage chest</li>
+<li>Item identification now works in the group ironman shared storage</li>
+<li>The pickpocket stun timer now works correctly with the dodgy necklace protection</li>
+<li>A rocket emoji was added to the emoji plugin (<code>&gt;==&gt;</code>)</li>
+<li>The player <code>Lookup</code> option now chooses the correct hiscores based on the world type</li>
+</ul>
+<p>Enjoy!</p>
+<p>- Adam</p>
+<h3>New commits</h3>
+<p>We had 23 contributors this release!</p>
+<pre><code>Adam (59):
+      api: add on tick callback
+      camera plugin: fix tooltips with uncapped fps
+      music plugin: fix tooltips with uncapped fps
+      gpu: clear target buffer offset on login screen
+      barrows: fix brothers slain overlay flashing
+      bank: block bank pin going to chatbox
+      clues: capitalize fairy ring BKP
+      client: remove rogues' den plugin
+      cache: rename objectdefinition ambient sound ids
+      api: add ambient sound effect
+      music: add option to mute ambient sound effects
+      gpu: store and use previous viewport's offsets for each frame
+      gpu: update suppressed warnings
+      gpu: initialize targetBufferOffset on startup
+      gpu: enable adaptive vsync
+      opponent info: hide overlay if hp hud is active
+      opponent info: use long npc name if available
+      banktags: remove extra space in chatbox prompt
+      banktags: improve bank scrollbar updates
+      banktags: remove setBankScroll event
+      clues: remove unnecessary item array copy
+      clues test: remove unnecessary stubbing
+      chat filter: Ignore character accents for matching
+      gpu: add sync mode config
+      timestamp: use steam client chat timestamp support
+      timestamp: immediately apply color config changes
+      screenshot: update duel arena messages
+      chat commands: update duel arena messages
+      barrows: fix vanilla overlay flashing with unlocked fps
+      loot tracker: add mahogany homes supply crate
+      logback: use SizeAndTimeBasedRollingPolicy
+      Add gim clan chat types
+      chat message manager: don't apply color changes to message nodes
+      chat history: include clan system messages
+      config panel: refactor input components creation into methods
+      ui: highlight selected cells correctly
+      config: add support for enum sets
+      world hopper: allow selecting multiple region filters
+      hiscore: use hiscore endpoint for world for player lookup op
+      chat history: remove group Clear history option
+      mes: add left click customization
+      screenshot plugin: reorder config
+      screenshot plugin: add combat achievements
+      screenshot plugin: test screenshot filenames
+      config service: avoid raising a json exception on non json input
+      loot tracker: aggregate kills prior to inserting
+      tile indicators: add config sections
+      api: make MenuEntry an interface
+      chatfilter: add clan message types
+      friendslist: add option to hide per-friend login notifications
+      rl-client: build test jar
+      ge plugin: compact buy offer examine text
+      gpu: add model hsl override support
+      nmz: fix point overlay flickering with unlocked fps
+      widget inspector: add listeners
+      hiscore: add nex
+      grandexchange: remove osb ge client
+      Move hiscore client to rl-client
+
+Alan Baumgartner (1):
+      party: add option to join previous party and join party by id
+
+Alex (1):
+      ground items: Fix despawn timer in clan hall (#14358)
+
+Brad Rammel (1):
+      achievement diary: remove the queen of thieves quest requirement
+
+Daniel (1):
+      hiscore panel: change top border size to 10
+
+Dasgust (1):
+      chatchannels: display online member count
+
+Freeburn113 (1):
+      woodcutting: update respawn times from wiki
+
+Hydrox6 (4):
+      roof removal: fix rimmington crafting store roof
+      roof removal: fix tolna's rift
+      move runepouch rune enum to client/game
+      clues: make item requirements work with the runepouch
+
+Im2be (1):
+      inv tags: add cox storage chest
+
+Josh J (1):
+      tile indicators: add fill color config
+
+Krazune (1):
+      timers: add dodgy necklace protection to pickpocket stun timer
+
+LlemonDuck (1):
+      special counter: ignore vet'ion hellhounds
+
+Logan (1):
+      emoji: add rocketship emoji
+
+Max Weber (9):
+      gpu: use pbo &amp; driver owned buffer for ui tex upload
+      gpu: use optimized scene uploading for dynamic models too
+      camera: remove our compass look op config
+      avoid boxing `Comparator.comparing`s
+      chatchannel: remove target mode
+      rl-client: fix sending channel messages dropping ! prefixes
+      rl-client: remove chatbox performance plugin
+      rl-api: use less confusing names for model indices
+      cache: add rev202 model formats
+
+Paul Norton (1):
+      spec counter: add sire spawns and scions to ignore list
+
+Ron Young (1):
+      api: MenuEntry::setDeprioritized return self
+
+Tal Skverer (1):
+      timers: Track imbued heart timer from varbit
+
+Wayne Li (1):
+      hiscores: fix npe
+
+Zach (1):
+      widget item overlay: add group storage to showOnBank
+
+emerald000 (1):
+      clues: Fix charcoal burners STASH location (#14306)
+
+orange-puff (1):
+      menu swapper: add teleports swap to teleport swap
+
+septicsalmon (1):
+      item identification: add option for each seed type
+
+simeonlg (1):
+      clues: Accept Tome of water when requiring water runes (#14361)
+</code></pre>
+</div>
+    </content>
+  </entry>
+  
+  <entry>
+    <id>https://runelite.net/blog/show/2021-10-28-1.8.0-Release</id>
+    <link href="https://runelite.net/blog/show/2021-10-28-1.8.0-Release" />
+    <title>1.8.0 Release</title>
+    <summary>Uncapped frame rate</summary>
+    <updated>2021-10-28T19:00:00.000Z</updated>
+    <author>
+      <name>Adam</name>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml"><p>The GPU plugin has a new <code>Unlock FPS</code> option which disables the 50 FPS hard cap on the client and allows the client to render frames at the maximum rate supported by your system. For most users, this will be 60 FPS, unless you have a display and GPU which supports a higher refresh rate. The higher frame rate is applied to camera movements, like how the steam and mobile clients work, which results in a smoother feel when moving the camera with mouse or keyboard input.</p>
+<p><img src="/img/blog/1.8.0-Release/unlocked_fps.mp4" alt="Unlocked FPS" /></p>
+<h3>MacOS M1 Launcher</h3>
+<p>If you missed the previous blog, a native launcher for the Apple M1/M1 Pro/M1 Max is now available. If you have one of these systems and haven't already, we highly recommend downloading the newer launcher <a href="https://github.com/runelite/launcher/releases/download/2.2.0/RuneLite-aarch64.dmg">here</a>.</p>
+<p>There are also several smaller improvements and bug fixes, including:</p>
+<ul>
+<li>Selected bank tag tabs no longer get applied to shared storage. You may additionally also search shared storage using bank tag names when a bank tag is selected</li>
+<li>The actions required in the skill calculator now no longer sometimes give incorrect results when using partial xp</li>
+<li>The <code>!pets</code> command now correctly recognizes pet chinchompas</li>
+<li>The Shared Storage button no longer overlaps the bank capacity interface</li>
+<li>A bug causing HD healthbars widths to be incorrect was fixed</li>
+<li><code>Lookup</code> was added to player names in the group ironman group list</li>
+<li><code>!kc gg</code> and <code>ggs</code> short names were added for Grotesque Guardians</li>
+<li>A bird nest tier setting was added to the Woodcutting plugin to allow only sending notifications for bird nests of a certain clue level</li>
+<li>The spec counter now has a configuration option for the bulwark special attack threshold</li>
+<li>The black <code>Loading</code> and <code>Connection lost</code> boxes now get drawn correctly in the upper left when GPU is enabled</li>
+<li>The prayer dose overlay now correctly computes how much prayer sanfew serums restore</li>
+</ul>
+<p>Enjoy!</p>
+<p>- Adam</p>
+<h3>New commits</h3>
+<p>We had 11 contributors this release!</p>
+<pre><code>Adam (21):
+      api: make HashTable implement iterable
+      game event manager: send itemcontainer change events for all containers
+      api: add getItemContainer(int)
+      api: import model bottomY
+      gpu: improve model visible check
+      hiscore: simplify lookup menu option add logic
+      wiki: fix positioning wiki icon with wiki entity lookup off
+      api: add clan id to clan channel changed event
+      widget overlay: update gwd kc position
+      banktags: fix active tag being applied to shared storage
+      inventoryid: add gim shared storage inventories
+      prayer: fix sanfew prayer dose indicator
+      skillcalc: only recompute xp bonus values once when bonus changes
+      skillcalc: round bonus xp to nearest tenth
+      skillcalc: use double precision for xp
+      Add runelite_callback opcode to cache
+      gpu: fix drawing loading and connection lost boxes
+      skillcalc: use fixed point arithmetic for xp calculations
+      Bump to 1.8.0-SNAPSHOT
+      client loader: add new jagex certificate
+      gpu: add uncap fps option
+
+BrastaSauce (1):
+      hiscore: Add player lookup in group ironman tab
+
+BrianSchimert (1):
+      chat commands: Add shorthand names for Grotesque Guardians (#14305)
+
+Hydrox6 (3):
+      api: add group ironman account types
+      skill calculator: fix incorrect icon for Hespori
+      interface styles: fix incorrectly sized 140px healthbar
+
+Illya Myshakov (1):
+      chat commands: fix incorrect pet chin ID
+
+Kerzyte (1):
+      skill calculator: minor xp corrections
+
+Tal s (1):
+      woodcutting: Add clue nest notification config (#14132)
+
+TheStonedTurtle (1):
+      spec counter: add bulwark threshold config
+
+lkmrrs (1):
+      skill calculator: Add javelins to fletching calculator (#14317)
+
+melkypie (2):
+      banktags: fix bank equipment button and item count spacing
+      banktags: fix group storage button location
+
+shmeeps (1):
+      prayer: add blighted super restore
+</code></pre>
+</div>
+    </content>
+  </entry>
+  
+  <entry>
+    <id>https://runelite.net/blog/show/2021-10-06-1.7.25-Release</id>
+    <link href="https://runelite.net/blog/show/2021-10-06-1.7.25-Release" />
+    <title>1.7.23, 1.7.24, and 1.7.25 Release</title>
+    <summary>All-color HD healthbars, ground marker fill opacity, and Apple M1 launcher</summary>
+    <updated>2021-10-06T10:00:00.000Z</updated>
+    <author>
+      <name>Jordan</name>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml"><p>The HD healthbars feature of the Interface Styles plugin now supports bars of all colors and sizes.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Nightmare health bars</th>
+<th style="text-align:center">Zalcano health bar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="/img/blog/1.7.25-Release/nightmare-health-bar1.png" alt="Nightmare boss health bar" /> <img src="/img/blog/1.7.25-Release/nightmare-health-bar2.png" alt="Nightmare pillar health bars" /></td>
+<td style="text-align:center"><img src="/img/blog/1.7.25-Release/zalcano-health-bar.png" alt="Zalcano health bar" /></td>
+</tr>
+</tbody>
+</table>
+<p>Ground markers now have a configurable fill opacity.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">0 fill opacity markers</th>
+<th style="text-align:center">50 fill opacity markers (default)</th>
+<th style="text-align:center">150 fill opacity markers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="/img/blog/1.7.25-Release/ground-markers-0-fill.png" alt="Ground markers with 0 fill opacity" /></td>
+<td style="text-align:center"><img src="/img/blog/1.7.25-Release/ground-markers-50-fill.png" alt="Ground markers with 50 fill opacity" /></td>
+<td style="text-align:center"><img src="/img/blog/1.7.25-Release/ground-markers-150-fill.png" alt="Ground markers with 150 fill opacity" /></td>
+</tr>
+</tbody>
+</table>
+<h3>MacOS M1 Launcher</h3>
+<p>MacOS users: A native launcher for the Apple M1 is now available! If you have a Mac with an Apple M1
+processor we recommend reinstalling RuneLite with the new launcher, which gives better performance.
+Download it <a href="https://github.com/runelite/launcher/releases/download/2.2.0/RuneLite-aarch64.dmg">here</a>.</p>
+<p>There are also several smaller improvements and bug fixes, including:</p>
+<ul>
+<li>Dinh's bulwark special attacks are now tracked via the Special Attack Counter plugin</li>
+<li>Inventory tags now appear on items in the gravestone collection interface</li>
+<li>The cannon plugin is more reliable about detecting your cannon placement in situations where your
+animations are interrupted.</li>
+<li>NPC model outlines are no longer a few pixels mis-aligned when rendered on GPU</li>
+<li>Minimap ground marker overlays have had their positioning corrected</li>
+<li>The Clue Scroll plugin now displays solutions for the X Marks the Spot quest steps</li>
+<li><code>!kc cg</code> is now a recognized abbreviation for Corrupted Gauntlet in the Chat Commands plugin</li>
+<li>The Screenshot plugin can now take screenshots of clan member deaths. Additionally, for collection
+log slot screenshots, it will capture the popup if your game settings are set to show one.</li>
+<li>Ducks are now highlighted during bird tasks in the Slayer plugin</li>
+<li>The Skybox plugin no longer thinks that the inside of Prifddinas is in a dungeon</li>
+<li>Cannon spots in the Jormungand prison have been added to the Cannon plugin</li>
+<li>The bonecrusher xp penalty has been added as an available bonus option in the Skill Calculator
+plugin</li>
+<li>The tag tab tab of the Bank Tags plugin now has a working scrollbar</li>
+<li>The Menu Entry Swapper plugin bank option swaps now work correctly in bank deposit boxes</li>
+<li>The Item Charges plugin tracks Ring of forging charges correctly when its effect is combined with
+that of the Varrock platebody</li>
+</ul>
+<p>Enjoy!</p>
+<p>- Jordan</p>
+<h3>New commits</h3>
+<p>We had 17 contributors this release!</p>
+<pre><code>Adam (31):
+      npc highlight: fix npe rendering minimap names on npcs with no name
+      Move npc highlight overlay to core
+      corp: use npc overlay service
+      runecraft: use npc overlay service
+      external plugins: require assertions when loading builtin plugins
+      npc minimap overlay: use unmodified highlight color
+      npc overlay: set lower priority on npc change and despawn handlers
+      widget overlay: correct raids points overlay position
+      music: check game state before applying sliders on startup
+      npc overlay: clear highlighted npcs on logout
+      client: update jna to 5.9.0
+      api: add model vertex normals
+      api: add scene tile shapes, underlay, and overlay ids
+      ground markers: add fill opacity config
+      xtea: skip unknown map regions
+      xp tracker overlay: treat counter=off progressbar=off as hidden
+      Update okhttp to 3.14.9
+      http-service: assign name to scheduler thread
+      api: remove cachedModels2 and nodecache setters
+      perspective: add gpu projection for modelToCanvas
+      perspective: refactor localToCanvas
+      api: add runtime jar
+      api: mark runtime classes as final
+      api: move Favour to achievementdiary plugin
+      api: add clan ids and accessors
+      spec counter: add Dinh's bulwark
+      Fix ground marker minimap overlay position
+      item charges: fix rof tracking with varrock platebody
+      ui: recompute minimum size after frame restore
+      api: add widget classes to runtime exclusions
+      hiscore: switch to league hiscores
+
+Arnaud Peralta (3):
+      roof removal: Add Juliet house overrides (#14108)
+      inventory tags: Show on gravestone collection interface (#14113)
+      roof removal: Add Weiss override (#14177)
+
+Brett (1):
+      slayer: Add duck as alternative for bird task (#14224)
+
+Christian Bull (1):
+      agility shortcut: include grapple rocks in observatory shortcut
+
+Hablapatabla (1):
+      roof removal: Add Barbarian village overrides
+
+Hydrox6 (6):
+      interface styles: add HD healthbars for the rest of the healtbars
+      prayer: shorten hd prayer bar to fit with updated health bars
+      cannon: make onChatMessage use if/else
+      achievementdiary: correct spelling of shortcut
+      cannon: update cannon location when interacting with the player's cannon
+      gpu: display device and driver being used during plugin startup
+
+Jordan Atwood (12):
+      idle notifier: Support filling water vessels, Shades of Mort'ton
+      widgets: Add POH treasure chest widget IDs
+      client: Support POH treasure chest inventory overlays
+      status bars: Fix left bar Y offset
+      status bars: Clean up rendering code
+      api: Add getMirrorPoint to WorldPoint API
+      skybox: Show surface color while in Prifddinas
+      skill calculator: Code cleanup
+      skill calculator: Define actions and bonuses in Java
+      skill calculator: Add ItemSkillAction interface
+      chat colors: Add engine message recoloring
+      cluescrolls: Add X Marks The Spot quest solutions
+
+LlemonDuck (1):
+      chatcommands: cg shorthand for corrupted gauntlet
+
+Max Weber (6):
+      rl-client: add plugin conflict support
+      Revert &quot;rl-client: add plugin conflict support&quot;
+      rl-client: add plugin conflict support
+      config: clarify plugin conflict list
+      rl-client/RSProfileType: add Shattered Relics profile type
+      rl-client: use vanilla ItemComposition cache
+
+Patrick Watts (2):
+      api: Add contains methods to WorldPoint and WorldArea
+      screenshot: Add clan member death screenshotting (#14052)
+
+Tal Skverer (2):
+      cannon: Add Dagganoth spots in Jormungand prison
+      cannon: Increase max distance for cannon overlays
+
+Vic Segers (1):
+      itemstats: Add jangerberries prayer point restore (#14101)
+
+dekvall (1):
+      skill calculator: Add common thieving chests
+
+evaan (1):
+      skill calculator: Add bonecrusher prayer bonus
+
+geheur (2):
+      bank tags: Fix tag tab tab scroll height (#13761)
+      menu swapper: add extra op swapping for deposit box
+
+neatclient12345 (1):
+      skill calculator: Fix grammar 0-action selections (#13995)
+
+superiorser9 (1):
+      screenshot: Capture collection log popup notifications
+</code></pre>
+</div>
+    </content>
+  </entry>
+  
+  <entry>
+    <id>https://runelite.net/blog/show/2021-09-06-1.7.22-Release</id>
+    <link href="https://runelite.net/blog/show/2021-09-06-1.7.22-Release" />
+    <title>1.7.22 Release</title>
+    <summary>Interact highlight plugin, improved Slayer and Implings highlighting, and other features and fixes</summary>
+    <updated>2021-09-06T10:00:00.000Z</updated>
+    <author>
+      <name>Jordan</name>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml"><p>We've added the Interact Highlight plugin, which draws an outline around NPCs and objects you hover
+over and interact with.</p>
+<p><img src="/img/blog/1.7.22-Release/interaction-highlight.mp4" alt="Demonstration of the Interaction Highlight plugin at the Grand Exchange" /></p>
+<p>Login and logout messages for friends and friends chat chanels no longer appear for world hops.</p>
+<p>There are also several smaller improvements and bug fixes, including:</p>
+<ul>
+<li>The Slayer and Implings plugins now use the same system for highlighting as the NPC Indicators
+plugin, allowing configurable hull/tile/outline overlays to be drawn. Note: this currently
+requires the NPC Indicators plugin to be enabled, we will be removing this dependency in the
+future.</li>
+<li>The NPC Indicators plugin now has a separate fill color option, allowing the fill and border
+colors to be fully customizable</li>
+<li>We've fixed a bug with the Roof Removal plugin which sometimes caused game crashes on teleports</li>
+<li>To match features available in the Steam OldSchool RuneScape client, we have enabled the Antidrag
+plugin in PvP scenarios, and we've increased the walk click distance.</li>
+<li>Loot Tracker entries now display unit price of item stacks in their tooltips</li>
+<li>The new combat achievement slayer helmet variations are now supported in the Slayer and Clue
+Scroll plugins</li>
+<li>The wilderness level vanilla widget has been made moveable</li>
+<li>Swap options have been added to the Menu Entry Swapper plugin for the Desert amulet 4</li>
+<li>The burner timers of the POH plugin have been fixed to be more accurate</li>
+<li>The expanded side panel is now remembered and restored when restoring the sidebar</li>
+<li>UI tooltips on MacOS are no longer cut off by the game screen</li>
+<li>The Roof Removal plugin has had many areas touched up to better hide roofs, and now works in
+instances such as quest instances</li>
+<li>The Grotesque Guardians instance timer has been changed to 5 minutes</li>
+<li>The Loot Tracker plugin now detects loot from Camdozaal vault lootboxes and the rogues' chest</li>
+<li>The Woodcutting plugin no longer shows respawn timers for POH construction trees</li>
+<li>The mining plugin now shows respawn timers for Barronite ore and deposits</li>
+<li>The XP Globes overlay no longer tries to draw itself slightly overlapping its bounding box</li>
+</ul>
+<p>Enjoy!</p>
+<p>- Jordan</p>
+<h3>New commits</h3>
+<p>We had 20 contributors this release!</p>
+<pre><code>Adam (45):
+      chat commands: use script event for loading col log pets
+      clues: fix Shayzien Infirmary clue challenge
+      chat commands: fix parsing nightmare nb
+      api: remove many unused projectile ids
+      api: fix naming of menuoptionclicked params
+      chat commands: fix parsing nightmare pb
+      Add interact highlight plugin
+      loot tracker: add ruins of camdozaal vault lockboxes
+      poh: fix burner overlay timers
+      api: add menu location and size accessors
+      hiscore: switch to dmmt hiscores
+      antidrag: enable in pvp
+      http service: add pets list length check
+      widgetoverlay: support detached overlays
+      slayer plugin: use npchiglight for task highlights
+      redis pool: don't reuse broken jedis instances
+      interact highlight: set overlay priority to high
+      widget overlay: rebuild overlay layers when xp tracker moves
+      widget overlay: lower priority of oxygen and hp interfaces
+      npc indicators: add fill color config
+      woodcutting: remove respawn timers from construction trees
+      ping: add macos support for icmp ping
+      config manager: fsync temp config file
+      clientloader: fix loading classes in packages
+      clientui: fix restoring sidepanel when expanding sidebar
+      api: add type parameter to Comparable
+      chat channel: fix join/leave world hop detection
+      xp updater: don't send updates for dmm, leagues, or beta worlds
+      chat commands: rename tob story mode to entry mode
+      npc indicators: allow plugins to specify highlight styles
+      implings plugin: use npc indicators for impling overlay
+      chat commands: update to parse new adv log pb counters
+      ge: fix detecting dmmt world type
+      Update world types for seasonal deadman
+      world hopper: set activity tooltip on world list
+      overlay: only layout widget overlays if the preferred location is set
+      world hopper: bubble up mouse events from activity label
+      loot tracker: add world id to loot record for dmmt
+      use maven's native reproducible build support
+      logback: add duplicate exception filter
+      api: flatten model uvs
+      wiki: move icon to match vanilla position
+      api: make getCanvasTilePoly work on multi-tile npcs
+      pom: remove source/target configuration on maven-compiler-plugin
+      ui: force heavyweight tooltips on macos
+
+Adam Davies (1):
+      mining: Add barronite ore and deposits
+
+BenMortensenTTS (1):
+      loot tracker: add rogues' chest
+
+Christian (1):
+      menu swapper: add placeholder withdraw swap
+
+Cyborger1 (1):
+      text: don't remove double spaces in toJagexName
+
+Eirik Leikvoll (1):
+      interact highlight: fix auto retaliate highlight color
+
+Hydrox6 (21):
+      world map: correct locations of quest markers (#13960)
+      client: update various wordings to use &quot;signed in/out&quot; for RL accounts
+      ground items: make loot beams work with only show loot
+      roof removal: fix some roof bleed in Prifddinas
+      roof removal: add overrides for Mage Arena
+      roof removal: add overrides for Lighthouse during Horror from the Deep
+      clues: remove non-existent clues
+      roof removal: add overrides for redwoods
+      roof removal: add overrides for port sarim's boats
+      roof removal: add overrides for entrana's boat
+      roof removal: fix roof collisions at ranging guild
+      roof removal: add overrides for the boat next to morytania's farm
+      roof removal: add overrides for dorgesh-kaan
+      roof removal: add overrides for the temple of light
+      roof removal: add overrides for fossil island underwater
+      roof removal: add overrides for waterbirth island dungeon
+      roof removal: fix ardougne castle 1st floor
+      roof removal: properly account for instances when applying overrides
+      loot tracker: add ea display to tooltips
+      loot tracker: don't show unneeded tooltip lines for coins and platinum
+      xp globes: account for progress arc width when deciding overlay bounds
+
+Illya Myshakov (1):
+      chat commands: use rl format message for pets
+
+Jordan Atwood (6):
+      banktags: Fix bank scroll height with separators hidden (#13723)
+      Revert &quot;XpInfoBox: Give stats panel equal column widths&quot;
+      ItemMapping: Add combat achievement rewards variations
+      slayer: Support combat achievement slayer helms
+      clues: Support combat achievement slayer helms
+      roof removal: Fix Ardougne monastery
+
+JoshS (1):
+      skill calc: add Magic Essence Potion
+
+Max Weber (5):
+      itemstats: remove quest field
+      rl-client/RSProfileType: add DMM Reborn
+      rl-client/ImageCapture: use RSProfileType for screenshot naming
+      rl-api: expose actor pose anim source setters
+      timetracking: don't load notification icons for every panel
+
+Ryan (1):
+      ItemMapping: Add Tome of Water and Master Scroll Book
+
+SkylerPIlot (2):
+      skill calculator: Add Morytania diary shade exp bonus
+      skill calculator: Add Urium remains
+
+Steven L (1):
+      clues: Add Wizards' Tower fairy ring code to cryptic clue (#13977)
+
+ThePharros (1):
+      menu swapper: add desert amulet 4
+
+TheStonedTurtle (2):
+      itemstats: Add Corrupted Paddlefish
+      CrypticClue: Fix hosidius fruit store crates highlighting (#14051)
+
+Trevor Engen (1):
+      slayer: Change moss giants task icon to mossy key (#13962)
+
+Vetricci (6):
+      item mapping: add combat achievement slayer helm variants
+      itemstats: Add new Gauntlet food
+      roof removal: fix Varrock Castle gallery
+      roof removal: fix eastern Dark Beast area
+      roof removal: add overrides for Prifddinas
+      skillcalculator: Add new amethyst items (#13890)
+
+emerald000 (1):
+      boss timers: Change Grotesque Guardians timer to 5 minutes (#13893)
+
+pilino1234 (2):
+      skillcalculator: Add Camdozaal activities
+      worldmap: Add mining spots in Ruins of Camdozaal
+</code></pre>
+</div>
+    </content>
+  </entry>
+  
+  <entry>
+    <id>https://runelite.net/blog/show/2021-07-21-1.7.17-Release</id>
+    <link href="https://runelite.net/blog/show/2021-07-21-1.7.17-Release" />
+    <title>1.7.17 Release</title>
+    <summary>Loot beams and pets chat command</summary>
+    <updated>2021-07-21T10:00:00.000Z</updated>
+    <author>
+      <name>Jordan</name>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml"><p>Options have been added to the Ground Items plugin to draw loot beams for highlighted items, and for
+items at or above a given price tier.</p>
+<p><img src="/img/blog/1.7.17-Release/loot-beams.gif" alt="Ground item loot beams" /></p>
+<p>A new command, <code>!pets</code>, has been added to the Chat Commands plugin, which will display the number of
+pets owned along with an icon of each pet owned. You must first check the <code>All pets</code> section of your collection
+log for RuneLite to learn which pets you have. Additional pets are automatically added if the collection log unlock
+notifications are enabled in the game settings.</p>
+<p><img src="/img/blog/1.7.17-Release/pets-chat-command.png" alt="Pets chat command" /></p>
+<p>There are also several smaller improvements and bug fixes, including:</p>
+<ul>
+<li>An option has been added to the Status Bars plugin to hide them while outside of combat</li>
+<li>The Report Button plugin can now display idle time on the report button</li>
+<li>The Menu Entry Swapper plugin's &quot;Quick Pass/Open/Start/Travel&quot; swap now swaps Zulrah's sacrificial
+boat's Quick-board option</li>
+<li>Teleport scrolls are now given labels via the Item Identification plugin</li>
+<li>The Timers plugin now shows a timer for being stunned while pickpocketing</li>
+<li>A number of locations have had their roof removal mapping improved. No more random roof pieces
+floating in the air!</li>
+<li>Clue scrolls requiring you travel through the Mos Le'Harmless Cave no longer prompt you to bring
+a light source when you've already built and lit the Fire of Eternal Light there</li>
+<li>The Time Tracking overview panel is no longer blocked from opening when your farming contract crop
+is dead</li>
+</ul>
+<p>Enjoy!</p>
+<p>- Jordan</p>
+<h3>New commits</h3>
+<p>We had 12 contributors this release!</p>
+<pre><code>Adam (4):
+      item identification: clean up config enabled checks
+      report button: add idle time
+      menu entry swapper: add sacrificial boat quick board swap
+      chat commands: add pets command
+
+Hydrox6 (5):
+      roof removal: add overrides for Shilo Village
+      roof removal: fix entrance to Draynor Manor
+      roof removal: fix bridge at entrance to Lletya
+      roof removal: add overrides for Harmony Island
+      roof removal: fix Arceuus church upper floors
+
+Jordan Atwood (2):
+      CoordinateClue: Fix Isle of Souls enemies
+      roof removal: Add overrides for Keldagrim
+
+Max Weber (8):
+      rl-api: add JagexColor util
+      timetracking: don't fail rendering overview with dead contracts
+      worldmap: use correct bounds for tooltip hit checking
+      music: use vanilla's volume percentage conversion
+      jshell: run cleanups on the client thread
+      rl-client: render horizontal scroll bars
+      jshell: allow copy of shell console
+      jshell: better unresolved symbol handling
+
+Neil Rush (1):
+      roof removal: Fix magic guild first floor (#13879)
+
+Peter Mauldin (1):
+      item identification: add teleport scrolls
+
+RiddleTime (1):
+      skill calc: add wall safe to thieving
+
+Robert (1):
+      timers: add pickpocket stun timer
+
+Trevor (2):
+      rl-api: add RuneLiteObject
+      ground items plugin: add lootbeams
+
+Vetricci (1):
+      clues: Fix Shayzien cryptic clue crate location
+
+emerald000 (1):
+      api: Fix Mos Le'Harmless firepit varbit (#13906)
+
+ermalsh (1):
+      statusbars: Add option to hide outside of combat
+</code></pre>
+</div>
+    </content>
+  </entry>
+  
+  <entry>
+    <id>https://runelite.net/blog/show/2021-07-14-1.7.16-Release</id>
+    <link href="https://runelite.net/blog/show/2021-07-14-1.7.16-Release" />
+    <title>1.7.14, 1.7.15, and 1.7.16 Releases</title>
+    <summary>Model outline rendering, roof removal plugin, and website tile marker viewing and improved hub plugin pages</summary>
+    <updated>2021-07-14T10:00:00.000Z</updated>
+    <author>
+      <name>Jordan</name>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml"><p>We've added a new model outline renderer which can draw precise outlines of NPCs and objects via
+their respective indicator plugins.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">1px outline</th>
+<th style="text-align:center">2px outline</th>
+<th style="text-align:center">10px feathered outline</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="/img/blog/1.7.16-Release/npc-outline-1px.png" alt="Dust devils highlighted with a 1px outline" /></td>
+<td style="text-align:center"><img src="/img/blog/1.7.16-Release/npc-outline-2px.png" alt="Dust devils highlighted with a 2px outline" /></td>
+<td style="text-align:center"><img src="/img/blog/1.7.16-Release/npc-outline-feather.png" alt="Dust devils highlighted with a 1px outline" /></td>
+</tr>
+</tbody>
+</table>
+<p>We've added a roof removal plugin which can selectively hide roofs when standing or walking under
+them, hovering over them, or when they block the camera's view to your player. Experience the game's
+beautiful roofs without sacrificing visibility!</p>
+<p><img src="/img/blog/1.7.16-Release/roof-removal-plugin.mp4" alt="Roof removal plugin demo" /></p>
+<h1>Website feature additions</h1>
+<p>We've added a tile marker display page to the website. Just visit <a href="https://runelite.net/tile/">https://runelite.net/tile/</a> and
+<a href="https://github.com/runelite/runelite/wiki/Ground-Markers#importing--exporting">paste your exported ground
+markers</a> to see them
+visualized on the game map, like these Olm boss fight markers. If you are logged in to website you can also
+view your saved tile markers <a href="https://runelite.net/account/tile-markers">on tile markers account page</a></p>
+<p><a href="https://runelite.net/tile/show/W3sicmVnaW9uSWQiOjEyODg5LCJyZWdpb25YIjozNywicmVnaW9uWSI6MzgsInoiOjAsImNvbG9yIjoiI0ZGQ0NDQ0NDIn0seyJyZWdpb25JZCI6MTI4ODksInJlZ2lvblgiOjM2LCJyZWdpb25ZIjozOCwieiI6MCwiY29sb3IiOiIjRkZDQ0NDQ0MifSx7InJlZ2lvbklkIjoxMjg4OSwicmVnaW9uWCI6MzUsInJlZ2lvblkiOjM4LCJ6IjowLCJjb2xvciI6IiNGRkNDQ0NDQyJ9LHsicmVnaW9uSWQiOjEyODg5LCJyZWdpb25YIjozNCwicmVnaW9uWSI6MzgsInoiOjAsImNvbG9yIjoiI0ZGQ0NDQ0NDIn0seyJyZWdpb25JZCI6MTI4ODksInJlZ2lvblgiOjMzLCJyZWdpb25ZIjozOCwieiI6MCwiY29sb3IiOiIjRkZDQ0NDQ0MifSx7InJlZ2lvbklkIjoxMjg4OSwicmVnaW9uWCI6MzIsInJlZ2lvblkiOjM4LCJ6IjowLCJjb2xvciI6IiNGRkNDQ0NDQyJ9LHsicmVnaW9uSWQiOjEyODg5LCJyZWdpb25YIjozMSwicmVnaW9uWSI6MzgsInoiOjAsImNvbG9yIjoiI0ZGQ0NDQ0NDIn0seyJyZWdpb25JZCI6MTI4ODksInJlZ2lvblgiOjMwLCJyZWdpb25ZIjozOCwieiI6MCwiY29sb3IiOiIjRkZDQ0NDQ0MifSx7InJlZ2lvbklkIjoxMjg4OSwicmVnaW9uWCI6MjksInJlZ2lvblkiOjM4LCJ6IjowLCJjb2xvciI6IiNGRkNDQ0NDQyJ9LHsicmVnaW9uSWQiOjEyODg5LCJyZWdpb25YIjoyOCwicmVnaW9uWSI6MzgsInoiOjAsImNvbG9yIjoiI0ZGQ0NDQ0NDIn0seyJyZWdpb25JZCI6MTI4ODksInJlZ2lvblgiOjM3LCJyZWdpb25ZIjozNywieiI6MCwiY29sb3IiOiIjRkZGRjAwMDAifSx7InJlZ2lvbklkIjoxMjg4OSwicmVnaW9uWCI6MzcsInJlZ2lvblkiOjM5LCJ6IjowLCJjb2xvciI6IiNGRkZGMDAwMCJ9LHsicmVnaW9uSWQiOjEyODg5LCJyZWdpb25YIjoyOCwicmVnaW9uWSI6NTEsInoiOjAsImNvbG9yIjoiI0ZGRkYwMDAwIn0seyJyZWdpb25JZCI6MTI4ODksInJlZ2lvblgiOjI4LCJyZWdpb25ZIjo0OSwieiI6MCwiY29sb3IiOiIjRkZGRjAwMDAifSx7InJlZ2lvbklkIjoxMjg4OSwicmVnaW9uWCI6MzcsInJlZ2lvblkiOjUwLCJ6IjowLCJjb2xvciI6IiNGRkNDQ0NDQyJ9LHsicmVnaW9uSWQiOjEyODg5LCJyZWdpb25YIjozNiwicmVnaW9uWSI6NTAsInoiOjAsImNvbG9yIjoiI0ZGQ0NDQ0NDIn0seyJyZWdpb25JZCI6MTI4ODksInJlZ2lvblgiOjM1LCJyZWdpb25ZIjo1MCwieiI6MCwiY29sb3IiOiIjRkZDQ0NDQ0MifSx7InJlZ2lvbklkIjoxMjg4OSwicmVnaW9uWCI6MzQsInJlZ2lvblkiOjUwLCJ6IjowLCJjb2xvciI6IiNGRkNDQ0NDQyJ9LHsicmVnaW9uSWQiOjEyODg5LCJyZWdpb25YIjozMywicmVnaW9uWSI6NTAsInoiOjAsImNvbG9yIjoiI0ZGQ0NDQ0NDIn0seyJyZWdpb25JZCI6MTI4ODksInJlZ2lvblgiOjMyLCJyZWdpb25ZIjo1MCwieiI6MCwiY29sb3IiOiIjRkZDQ0NDQ0MifSx7InJlZ2lvbklkIjoxMjg4OSwicmVnaW9uWCI6MzEsInJlZ2lvblkiOjUwLCJ6IjowLCJjb2xvciI6IiNGRkNDQ0NDQyJ9LHsicmVnaW9uSWQiOjEyODg5LCJyZWdpb25YIjozMCwicmVnaW9uWSI6NTAsInoiOjAsImNvbG9yIjoiI0ZGQ0NDQ0NDIn0seyJyZWdpb25JZCI6MTI4ODksInJlZ2lvblgiOjI5LCJyZWdpb25ZIjo1MCwieiI6MCwiY29sb3IiOiIjRkZDQ0NDQ0MifSx7InJlZ2lvbklkIjoxMjg4OSwicmVnaW9uWCI6MjgsInJlZ2lvblkiOjUwLCJ6IjowLCJjb2xvciI6IiNGRkNDQ0NDQyJ9LHsicmVnaW9uSWQiOjEyODg5LCJyZWdpb25YIjozMCwicmVnaW9uWSI6MzcsInoiOjAsImNvbG9yIjoiI0ZGNjk2OUZGIiwibGFiZWwiOiJtYWdlIn0seyJyZWdpb25JZCI6MTI4ODksInJlZ2lvblgiOjM1LCJyZWdpb25ZIjo1MSwieiI6MCwiY29sb3IiOiIjRkY2OTY5RkYiLCJsYWJlbCI6Im1hZ2UifSx7InJlZ2lvbklkIjoxMjg4OSwicmVnaW9uWCI6MjgsInJlZ2lvblkiOjQ0LCJ6IjowLCJjb2xvciI6IiM2NENDQ0NDQyJ9LHsicmVnaW9uSWQiOjEyODg5LCJyZWdpb25YIjoyOSwicmVnaW9uWSI6NDQsInoiOjAsImNvbG9yIjoiIzY0Q0NDQ0NDIn0seyJyZWdpb25JZCI6MTI4ODksInJlZ2lvblgiOjMwLCJyZWdpb25ZIjo0NCwieiI6MCwiY29sb3IiOiIjNjRDQ0NDQ0MifSx7InJlZ2lvbklkIjoxMjg4OSwicmVnaW9uWCI6MzEsInJlZ2lvblkiOjQ0LCJ6IjowLCJjb2xvciI6IiM2NENDQ0NDQyJ9LHsicmVnaW9uSWQiOjEyODg5LCJyZWdpb25YIjozMiwicmVnaW9uWSI6NDQsInoiOjAsImNvbG9yIjoiIzY0Q0NDQ0NDIn0seyJyZWdpb25JZCI6MTI4ODksInJlZ2lvblgiOjMzLCJyZWdpb25ZIjo0NCwieiI6MCwiY29sb3IiOiIjNjRDQ0NDQ0MifSx7InJlZ2lvbklkIjoxMjg4OSwicmVnaW9uWCI6MzQsInJlZ2lvblkiOjQ0LCJ6IjowLCJjb2xvciI6IiM2NENDQ0NDQyJ9LHsicmVnaW9uSWQiOjEyODg5LCJyZWdpb25YIjozNSwicmVnaW9uWSI6NDQsInoiOjAsImNvbG9yIjoiIzY0Q0NDQ0NDIn0seyJyZWdpb25JZCI6MTI4ODksInJlZ2lvblgiOjM2LCJyZWdpb25ZIjo0NCwieiI6MCwiY29sb3IiOiIjNjRDQ0NDQ0MifSx7InJlZ2lvbklkIjoxMjg4OSwicmVnaW9uWCI6MzcsInJlZ2lvblkiOjQ0LCJ6IjowLCJjb2xvciI6IiM2NENDQ0NDQyJ9LHsicmVnaW9uSWQiOjEyODg5LCJyZWdpb25YIjozNSwicmVnaW9uWSI6NDMsInoiOjAsImNvbG9yIjoiIzY0RkY4NzAwIiwibGFiZWwiOiJydW5uZXIifSx7InJlZ2lvbklkIjoxMjg4OSwicmVnaW9uWCI6MzUsInJlZ2lvblkiOjQ1LCJ6IjowLCJjb2xvciI6IiM2NEZGODcwMCIsImxhYmVsIjoicnVubmVyIn0seyJyZWdpb25JZCI6MTI4ODksInJlZ2lvblgiOjMwLCJyZWdpb25ZIjo0MywieiI6MCwiY29sb3IiOiIjNjRGRjg3MDAiLCJsYWJlbCI6InJ1bm5lciJ9LHsicmVnaW9uSWQiOjEyODg5LCJyZWdpb25YIjozMCwicmVnaW9uWSI6NDUsInoiOjAsImNvbG9yIjoiIzY0RkY4NzAwIiwibGFiZWwiOiJydW5uZXIifSx7InJlZ2lvbklkIjoxMjg4OSwicmVnaW9uWCI6MzcsInJlZ2lvblkiOjQxLCJ6IjowLCJjb2xvciI6IiNGRkZGMDBGRiIsImxhYmVsIjoidGh1bWIifSx7InJlZ2lvbklkIjoxMjg4OSwicmVnaW9uWCI6MjgsInJlZ2lvblkiOjQ3LCJ6IjowLCJjb2xvciI6IiNGRkZGMDBGRiIsImxhYmVsIjoidGh1bWIifV0="><img src="/img/blog/1.7.16-Release/olm-markers-website-map.png" alt="Olm boss fight markers" /></a></p>
+<p>Additionally, our <a href="https://runelite.net/plugin-hub">Plugin Hub page</a> has become even more
+informative, as you can now click on a listed plugin and its project introduction will be presented.</p>
+<p>There are also several smaller improvements and bug fixes, including:</p>
+<ul>
+<li>A border width option has been added to the Ground Markers plugin</li>
+<li>The Inventory Viewer has an option to become hidden when your inventory tab is open</li>
+<li>The Barbarian Assault lobby and healer widgets are now moveable using our overlay system</li>
+<li>The cannon degrade timer is now shown for each stage of cannon setup, and a repair timer is added
+if your cannon degrades after being set up</li>
+<li>Recolored versions of the Blade of Saeldor and Bow of Faerdhinen correctly count toward your total
+bank value</li>
+<li>The Wintertodt plugin is now better at detecting when you have started fletching</li>
+<li>The thrall timer counts the extra time given from having a boosted magic level</li>
+<li>The XP Tracker plugin will no longer forget to draw an intermediate marker for the last level
+toward a configured XP goal</li>
+<li>A number of Shayzien and Great Kourend clue scroll steps have had their text or enemies corrected</li>
+</ul>
+<p>Enjoy!</p>
+<p>- Jordan</p>
+<h3>New commits</h3>
+<p>We had 15 contributors this release!</p>
+<pre><code>Adam (7):
+      tile indicators: add border width config
+      Revert &quot;http-service: fix hiscore test&quot;
+      http-service: fix hiscore test
+      inventory viewer: add option to hide when inventory is open
+      Close various resource inputstreams
+      object indicators: don't mark unnamed objects
+      api: fix computing scene coord for negative local points
+
+BegOsrs (1):
+      WidgetOverlay: Make Barbarian Assault widgets moveable (#13852)
+
+Cyborger1 (1):
+      clues: Fix capitalization for &quot;New Recruit Tony&quot; master anagram
+
+F.W. Dekker (1):
+      chat notifications: clarify how to enter multiple words
+
+Gamma91 (1):
+      roof removal: Add missing overrides for the lighthouse and falador castle (#13862)
+
+Hydrox6 (16):
+      loot manager: add phosani's nightmare
+      widgetoverlay: add back removed WidgetOverlays
+      combatlevel: fix attack range indicator
+      clues: fix hot/cold enemies for updated kourend locations
+      timers: make thrall timer use boosted magic level
+      overlay renderer: account for parent's position when clamping location
+      clues: fix the other kourend hot/cold enemies
+      chat commands: add shorthand names for phosani's nightmare
+      xp tracker: fix intermediate markers not showing for xp based goal ends
+      api: add roof removal api
+      plugins: add roof removal plugin
+      devtools: add tile region location and regionid to tile location tool
+      devtools: add roofs tool
+      roof removal: overrides to fix Pyramid Plunder and Yanille Bank
+      timers: add cannon repair timer
+      roof removal: change override.json file extension to .jsonc
+
+Jordan Atwood (4):
+      CoordinateClue: Add South of Shayziens' Wall clue
+      discord: Identify corrupted gauntlet separately
+      Remove unused Slf4j annotations and imports
+      CoordinateClue: Fix Crabclaw isle location
+
+LlemonDuck (1):
+      raids: screenshot overlay from client thread
+
+Loze-Put (1):
+      timers: Add cannon timer for each parts' setup (#13856)
+
+Max Weber (6):
+      Update script arguments to 2021-6-30
+      http-api, rl-client: add phosani's nightmare to hiscores
+      http-service: fix hiscore test
+      music: don't restart when rendrawing tli
+      worldmap: fix tooltip widget id
+      runelite-api: update Quest
+
+Meeran (1):
+      ItemMapping: Add Blade of Saeldor and Bow of Faerdhinen recolor mappings (#13859)
+
+Michael (1):
+      wintertodt: improve fletching activity status detection
+
+SirWrain (1):
+      achievement diary: Fix reworded hard desert diary entry (#13770)
+
+Woox (5):
+      Add model outline renderer
+      modeloutlinerenderer: fix clip boundaries in fixed mode
+      api: add actor current orientation
+      api: add decorative object offsets
+      api: add game object model orientation
+
+geheur (1):
+      mta: update alchemy room widgets ids
+</code></pre>
+</div>
+    </content>
+  </entry>
+  
+  <entry>
+    <id>https://runelite.net/blog/show/2021-06-23-1.7.13-Release</id>
+    <link href="https://runelite.net/blog/show/2021-06-23-1.7.13-Release" />
+    <title>1.7.11, 1.7.12, and 1.7.13 Releases</title>
+    <summary>Theatre of Blood: Hard and Story Mode, Shayzien and A Kingdom Divided, and other improvements</summary>
+    <updated>2021-06-23T10:00:00.000Z</updated>
+    <author>
+      <name>Jordan</name>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml"><p>RuneLite has been updated to support Theatre of Blood: Hard Mode and Story Mode. Players' Hard Mode
+kill counts are saved and can be shared using the <code>!kc</code> <a href="https://github.com/runelite/runelite/wiki/Chat-Commands">chat
+command</a> or looked up on the <a href="https://github.com/runelite/runelite/wiki/HiScore">hiscore
+plugin</a>.</p>
+<p>The various content updates centered around Shayzien and the A Kingdom Divided quest have been
+updated in the client, including:</p>
+<ul>
+<li>Many existing clue scrolls in the Shayzien region have had their solutions or directions changed,
+and a number of new clues have been added</li>
+<li>The new Arceuus spells now display timers of their duration and cooldown</li>
+<li>The Shayzien agility course has a lap counter and shows the number of laps needed to reach your
+level or xp goal</li>
+<li>World map icons and tooltips have been added for the A Kingdom Divided quest location and many
+skilling and resource icons in the Shayzien area</li>
+<li>Skill calculator entries have been added for demonic ashes, Shayzien agility courses, and the new
+Arceuus spells</li>
+</ul>
+<p>There are also several smaller improvements and bug fixes, including:</p>
+<ul>
+<li>You can now look up clan members' hiscore information via the clan member listing</li>
+<li>The team capes plugin has been renamed to the team plugin, and now supports listing of the number
+of nearby players sharing your team cape, friend chat, or clan</li>
+<li>The camera plugin no longer causes your camera pitch to increase when using the compass options
+while &quot;preserve pitch&quot; is enabled. Additionally, an option to preserve yaw while changing worlds
+has been added.</li>
+<li>Menu entry swapper options have been added for achievement diary item teleports and the
+construction cape</li>
+<li>Ground markers, NPC indicators, and object markers now support a configurable width for their
+overlays</li>
+<li>XP drops now support an option to override the standard client xp drop color allowing you to use
+any color, not just the select few client choices, for your xp drops</li>
+<li>POH icons for house objects decorated with the goblin decorations now display correctly</li>
+<li>Ground item despawn timers have been corrected for items appearing while fighting Tempoross</li>
+<li>The new A Kingdom Divided login screen has been added to the Login Screen plugin</li>
+<li>The colors of the inventory grid overlay are now customizable</li>
+<li>The spec counter plugin now displays special attacks landed on the Alchemical Hydra. It also
+resets its counter when leaving instanced areas.</li>
+<li>Wintertodt supply crate loots are now tracked in the Loot Tracker plugin</li>
+<li>An option has been added to capture screenshots when achieving new collection log entries</li>
+<li>Screenshots captured while on tournament/beta worlds are now stored to a separate folder for
+better organization</li>
+<li>Item stats shown for stamina potions while wearing the ring of endurance now correctly show it
+restoring 40 run energy rather than the usual 20</li>
+<li>A bug which could cause clients to launch without correctly downloading Plugin Hub listings has
+been fixed</li>
+</ul>
+<p>Enjoy!</p>
+<p>- Jordan</p>
+<h3>New commits</h3>
+<p>We had 19 contributors this release!</p>
+<pre><code>Adam (36):
+      Strip tags when doing friends chat lookups
+      api: add clan channel changed event
+      team capes: rename to team
+      team: add clan member counter
+      chatchannel: fix clan join/leave timeouts with fc join/leave off
+      sprite manager: use constructor injection
+      chat filter: fix collapsing replayed public chat
+      Use junit rule for mock webserver
+      camera: add zoom slider tooltip when dragging
+      chat channel: add target mode config
+      http-api: add tob hm hiscores
+      hiscore panel: add tob hard mode
+      chat filter: remove filter login
+      mta: clear hint arrow when leaving enchantment and alchemist room
+      config manager: disallow : in key names
+      chat commands: fix tob hm/sm kc/pb tracking
+      chat colors: fix clan chat message highlight keys
+      api: add setCameraYawTarget
+      camera: add option to preserve yaw when world hopping
+      chat commands: update tob new pb pattern
+      gpu: use renderbuffer for aa fbo
+      menu swapper: add con cape tele to poh
+      chat commands: update tob duration pattern
+      ground markers: add configurable border width
+      api: add widget line height accessors
+      menu swapper: add achievement diary items with non-standard teleport options
+      Remove examine api
+      screenshot plugin: consolidate kill count fields
+      screenshot plugin: make subdir strings constants
+      screenshot plugin: add tob story and hard mode screenshots
+      screenshot plugin: name tob hm/sm files differently
+      xp drops: add option to override standard client xp drop colors
+      loot tracker: add reset warning to event reset option
+      discord: fix npe from menu event timing out with elapsed total time
+      menu swapper: add enter-crypt to quick swap
+      api: add actor overhead cycle accessors
+
+Bird-Hands (1):
+      npc indicators: add configurable border width
+
+Broooklyn (2):
+      poh: Add icons for objects changed with Goblin Decorations
+      worldmap: Add TzHaar-Ket-Rak's Challenges minigame location
+
+Cyborger1 (4):
+      ItemIdentification: Add Ghorrock tablet
+      ChatHistory: Fix &quot;Copy to Clipboard&quot; after clan update
+      hiscore: add lookup clan member (#13706)
+      clues: Update description for coordinate south-west of Ferox
+
+FlashBasedGod (1):
+      ground items: Add Tempoross instance to normal despawn timers
+
+Hydrox6 (11):
+      clues: count bird glove as being correct for the weapon requirement
+      world map overlay: make icons display fully on the map when edge snapped
+      world map mouse listener: consume click if icon is clicked on
+      loginscreen: add a kingdom divided login screen
+      loot tracker: check for correct menu option type when deciding event
+      api: correct imcando hammer construction animation
+      skill calc: add demonic ashes
+      timers: add duration and cooldown timers for arceuus spells
+      skill calc: add shayzien courses
+      skill calc: add new arceuus spells
+      api: fix hitsplat sprite ids
+
+Jeremy Plsek (1):
+      inventory grid: add color config
+
+Jordan Atwood (12):
+      XpInfoBox: Give stats panel equal column widths
+      ProgressBar: Fix center label centering
+      item identification plugin: Add item mapping test
+      clues: Fix three step cryptic clue getLocations NPE
+      status bars: Add counter text drop shadow
+      HotColdLocation: Add clue type field
+      object indicators: add configurable border width
+      clues: Update and add clues for 6/16 Shayzien rework
+      clues: Add new A Kingdom Divided update clues
+      clues: Fix clues changed with A Kingdom Divided update
+      agility: Fix Shayzien basic course total xp
+      EmoteClue: Fix Shayzien war tent clue text
+
+LlemonDuck (3):
+      idle notifier: reset six hour notif on startup
+      camera: prevent pitch increment with &quot;preserve pitch&quot; enabled
+      Reset spec counter when leaving instanced fights
+
+Max Weber (8):
+      rl-client: never cache 4/5xx requests
+      client: correctly use Runnables::doNothing
+      cache: add 197 opcodes
+      rl-api: update Quest enum to 2021-6-16
+      worldmap: add shayzien rework locations
+      agility: add shayzien course
+      barbarianassault: remove dead overlay menuops
+      runelite-client: use menu entries for focusing world map points
+
+SirWrain (1):
+      achievementdiary: Fix hard Lumbridge diary entry text (#13689)
+
+SkylerPIlot (1):
+      spec counter: add Alchemical Hydra
+
+Steven Brice (1):
+      loot tracker: add Wintertodt supply crate
+
+ThePharros (1):
+      screenshot: Add option to screenshot collection log entries (#13625)
+
+andmcadams (1):
+      crowdsourcing/dialog: track start &amp; end of conversations (#13763)
+
+danshea00 (1):
+      screenshot: Use separate directory for tournament/beta worlds (#13631)
+
+emiljensen2 (1):
+      ItemMapping: add new tob kits
+
+petter (1):
+      clues: Add Giant's Den clue
+
+tanlines (1):
+      itemstats: Fix stamina restore with Ring of Endurance (#13692)
+</code></pre>
+</div>
+    </content>
+  </entry>
+  
+  <entry>
+    <id>https://runelite.net/blog/show/2021-05-28-1.7.10-Release</id>
+    <link href="https://runelite.net/blog/show/2021-05-28-1.7.10-Release" />
+    <title>1.7.8, 1.7.9, and 1.7.10 Releases</title>
+    <summary>Clans support, Party panel, and XP Tracker Per-Hour Rate Resetting</summary>
+    <updated>2021-05-28T10:00:00.000Z</updated>
+    <author>
+      <name>Jordan</name>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml"><h1>Clans</h1>
+<p><img src="/img/blog/1.7.10-Release/clan-icons.png" alt="Clan member icons" /></p>
+<p>We've added support for clans across various plugins, including:</p>
+<ul>
+<li>Support for clan messages in the chat timestamps, chat history, chat commands, chat filter, emoji,
+chat colors, and chat notifications plugins</li>
+<li>The Minimap plugin can recolor clan member player dots</li>
+<li>You can hop-to clan members' worlds using the World Hopper plugin</li>
+<li>The Player Indicator plugin has highlighting for clan members</li>
+<li>The Twitch plugin now uses <code>/t</code> as its chat trigger</li>
+</ul>
+<p>Additionally, the friends chat plugin was renamed to <code>Chat Channels</code> and allows adding join/leave
+messages to clan and guest clan channels, as well as changing your target chat channel by simply
+typing <code>/f</code>, <code>/c</code>, <code>/g</code>, and <code>/p</code>, as shown below:</p>
+<p><img src="/img/blog/1.7.10-Release/chat-channel-typing-modes.gif" alt="Chat channel typing modes" /></p>
+<h1>Party Panel</h1>
+<p>We have added a plugin panel for the Party plugin which shows your active party members and has UI
+for adding new members to your party and toggling specific players' health and prayer displaying in
+the overlay. Because of the added panel button, <em>the Party plugin has been disabled by default</em> and
+must be re-enabled for those wishing to use it. It also simplifies the invite flow (still via Discord)
+so it is possible to create a party and send invites immediately, and also allows accepting join requests
+via the client in the panel.</p>
+<p><img src="/img/blog/1.7.10-Release/party-panel.png" alt="Party plugin panel" /></p>
+<h1>XP Tracker Per-Hour Rate Resetting</h1>
+<p>You can now manually reset the XP/hr rates of the XP Tracker plugin without resetting the gained XP,
+and configure it to automatically reset these rates after a set timeout duration.</p>
+<p>There are also several smaller improvements and bug fixes, including:</p>
+<ul>
+<li>The Item Charges plugin now has a separate toggle for Guthix rests</li>
+<li>Chat message recoloring is fixed for players with spaces in their ingame name</li>
+<li>Skill challenge clues requiring a hammer now recognize the Imcando hammer as being accepted</li>
+</ul>
+<p>Enjoy!</p>
+<p>- Jordan</p>
+<h3>New commits</h3>
+<p>We had 6 contributors this release!</p>
+<pre><code>Adam (34):
+      item charges: add toggle for guthix rest
+      item charges: split up test into separate methods
+      chat message manager: fix recoloring own name with spaces
+      xptracker: use enum map for actions and other cleanup
+      chat timestamps: add timestamps for all message types
+      minimap: add clan chat dot color configuration
+      ui: queue repaint when progressbar is edited
+      discord plugin: sanity check user id and avatar id before building url
+      party service: sanitize user names
+      info panel: adjust nav button priority
+      party: only send location update when the location changes
+      twitch: change chat trigger to /t
+      chat history: support clan chat
+      chat history: rebuild pmbox when all is cleared
+      api: add getOnVarTransmitListener to Widget
+      friendschat: readd user count
+      api: add enum size
+      api: correct clans chattypes
+      devtools: add modicons command
+      friendchatmanager: rename to chaticonmanager
+      Change config name of party plugin to disable by default
+      api: add clan api
+      chat icon manager: add clan chat icons
+      chat colors: add clan recolors
+      world hopper: add hop-to clan member
+      player indicators: add clans
+      chat filter: add clan chat
+      emoji plugin: add clan chat
+      chat notifications: add clan chat
+      chat commands: add clan chat
+      Allow rs.version to be a double
+      runelite-api: add clan member join and leave events
+      friends chat: rename to chatchannel
+      chat channel: add typing modes
+
+Hydrox6 (2):
+      clues: support imcando hammer in skill challenges
+      skybox: add clan hall
+
+JoRouss (2):
+      party: add party panel
+      party: readd overlay leave party menu entry
+
+James Shelton (2):
+      xptracker: add option to reset per hour rates
+      xptracker: add auto reset per hour rates after set time
+
+Max Weber (15):
+      friendschat: remove Tab Chat option
+      friendschat: remove user count
+      gpu: increase texture limit
+      friendschat: remove unused title strings
+      SpriteID: update to 2021-5-19
+      screenshot: use new report button offset
+      interfacestyles: update chatbox sprite ids
+      rl-api: import getTopLevelInterfaceId
+      screenshot: don't attempt to draw a date when there is no report button
+      scripts/SkillTabBuilder: fix unbalanced stack
+      cache: update cs2 opcodes
+      rl-client: update cs2 overlay opcodes
+      rl-client: cleanup cs2 overlays
+      ChatboxPanelManager: use ScriptPreFired
+      timestamp: use less callbacks in script overlays
+
+emerald000 (1):
+      Rename Armadylian Guards to Armadylean Guards
+</code></pre>
+</div>
+    </content>
+  </entry>
+  
+  <entry>
+    <id>https://runelite.net/blog/show/2021-05-12-1.7.7-Release</id>
+    <link href="https://runelite.net/blog/show/2021-05-12-1.7.7-Release" />
+    <title>1.7.7 Release</title>
+    <summary>Minor fixes and improvements</summary>
+    <updated>2021-05-12T10:00:00.000Z</updated>
+    <author>
+      <name>Adam</name>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml"><p>We've had a few updates since the last blog post, mostly minor, and so this post includes those changes as well as the changes today.</p>
+<p>The low detail plugin now has an option to hide lower floors, which is particularly useful on lower end computers in
+busy areas, like the hallowed sepulchre.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Before</th>
+<th style="text-align:center">After</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="/img/blog/1.7.7-Release/hallowed-sepulchre-normal.png" alt="Hallowed Sepulchre as it normally appears" /></td>
+<td style="text-align:center"><img src="/img/blog/1.7.7-Release/hallowed-sepulchre-lower-floor-rendering-disabled.png" alt="Hallowed Sepulchre shown with the lower floor rendering disabled" /></td>
+</tr>
+</tbody>
+</table>
+<p>The friend list plugin now has an option to show the world a player logged into on the log in message.</p>
+<p><img src="/img/blog/1.7.7-Release/login.png" alt="login" /></p>
+<p>The item charges plugin can now show infoboxes with a charge count for braclets of slaughter, expeditious bracelets, and the chronicle.</p>
+<p><img src="/img/blog/1.7.7-Release/slaughter.png" alt="slaughter" /></p>
+<p>A world region filter was added to the world switcher plugin, which causes the world hopper panel to only list worlds in a specific region.</p>
+<p><img src="/img/blog/1.7.7-Release/world-hopper.png" alt="world-hopper" /></p>
+<p>The chat colors config has gained an additional option to allow recoloring your own username in chat.</p>
+<p><img src="/img/blog/1.7.7-Release/chat-name-color.png" alt="chat-name-color" /></p>
+<p>There are also several smaller improvements and bug fixes, including:</p>
+<ul>
+<li>STASH units that you've removed items from now stay highlighted after the clue step has been completed, to remind you to deposit the items back</li>
+<li>When using <code>Lookup</code> from the chatbox, the hiscore plugin will now use the correct hiscores based on the ironman symbol of the player</li>
+<li>Items required for skill challenge clues are now found when using the <code>clue</code> bank tag</li>
+<li>The fishing trawler time remaining display has been updated to reflect the recent changes to the game duration</li>
+<li>The status bars alignment in modern resizable mode has been fixed back to its original position</li>
+<li>The obstacles on the way to the Rellekka lighthouse now have their clickboxes highlighted</li>
+<li>Tempoross and the chest in the Threatre of Blood lobby are now tracked by the loot tracker</li>
+<li>The Imcando hammer has been added to the idle notifier, once again allowing idle notifications when done smithing</li>
+<li>A <code>!pb tempoross</code> command has been added (requires getting 1 additional kill post-update)</li>
+<li>The spec counter has been fixed to not count bandos godsword and bandos godsword (or) specs separately</li>
+<li>Battlestaffs have been added to the fletching calculator</li>
+<li>A <code>Leave</code> swap has been added to the menu entry swapper for leaving Tempoross after a game</li>
+<li>A bug causing the GPU plugin to break when antialiasing is forced by the system has been fixed</li>
+<li>The camera plugin now has an option to keep the vertical camera position when aligning the camera to cardinal directions</li>
+</ul>
+<p>Enjoy!</p>
+<p>- Adam</p>
+<h3>New commits</h3>
+<p>We had 21 contributors this release!</p>
+<pre><code>Adam (23):
+      wsclient: set ua on ws request
+      pom: rename maven-central repositories to central
+      api: add get/set min level to Scene
+      low detail: add option to hide lower planes
+      api: add getters for actor anim and spotanim frame
+      devtools: use setAnimationFrame
+      comp.cl: remove unused to_screen.cl import
+      Update build for jdk 16
+      containable frame: fix parsing version strings with only a major number
+      hiscore: use correct endpoint when looking up self with shortcut
+      hiscore: use correct endpoint when looking up chat messages
+      api: add player composition colors
+      api: add cross world message fields
+      clues: add skill challenge clue requirements to clue tag test
+      fishing plugin: update for fishing trawler changes
+      widgets: fix modern resizable interface container component id
+      chat message manager: add default color for friendschatnotification chat type
+      friends chat: use friendschatinfo color for join/part messages
+      agility plugin: add rellekka lighthouse obstacles
+      info: simplify language surrounding config import
+      client: accept custom javconfig url
+      item charges: simplify infobox creation logic
+      clientloader: don't use fallback config or client when jav_config is manually specified
+
+Alexsuperfly (2):
+      cannon: check invent cballs to initialize count when placing
+      cannon: set count when loading wrong type of cannonballs
+
+Amit G (1):
+      SkillChallengeClue: Support inactive crystal tools (#13517)
+
+Broooklyn (8):
+      loottracker: Separate events that do not produce ground items
+      loottracker: Add support for Tempoross Reward pool and new Casket
+      fishing: Add Tempoross IDs and config to highlight bubbling spots
+      Widget: Make Tempoross status indicator moveable
+      worldmap: Add fishing spots from Tempoross update
+      worldmap: Add Al Kharid and Ruins of Unkah Ferry locations
+      worldmap: Add Ruins of Unkah mining location
+      discord: finish naming over-world regions
+
+Cyborger1 (1):
+      SkillChallengeClue: Add Gold shade keys to Fiyr shade step (#13260)
+
+Hydrox (14):
+      Update discord invite links to start users in #welcome (#13549)
+      image util: add function to scale images while preserving aspect ratio
+      xp globes: scale icon while respecting aspect ratio
+      item charges: use RSProfiles for items with stored charges
+      time tracking: fix birdhouse notification buttons not doing anything
+      idle notifier: add support for the imcando hammer
+      wintertodt: add support for imcando hammer
+      clues: update reanimated abyssal demon task for new reanimation spells
+      skill calc: update arceuus spells
+      clues: highlight the last clue's STASH until items are deposited back
+      chat commands: add support for tempoross pb messages
+      item charges: add bracelet of slaughter and expeditious bracelet
+      slayer: remove bracelet charge tracking
+      camera: add option to preserve pitch on compass look menu entries
+
+Jordan Atwood (2):
+      HotColdLocation: Fix Seers' Village bank spot
+      menu manager: add menu entries in insert order
+
+LlemonDuck (2):
+      clues: Fix location of Captain Bleemadge (#13531)
+      Add Below Ice Mountain quest
+
+Maciej Lewicki (1):
+      friendlist: add option to show world in login notifications
+
+Martin H (1):
+      achievementdiary: Update Runecraft task texts (#13485)
+
+Matt Dennis (2):
+      spec counter: combine item variations into one weapon
+      examine: Improve plugin description and tags (#13399)
+
+Max Weber (4):
+      eventbus: preserve priority ordering during unregister
+      cache/ObjectLoader: add randomizeAnimStart opcode from rev 193
+      cache/NpcLoader: add category opcode from rev 195
+      Update IDs for 2021-4-28
+
+Nicholas Anzalone (2):
+      achievement diary: remove requirment from easy fishing trawler task
+      skill calc: Add battlesaff to fletching calculator (#13525)
+
+Owen (1):
+      clues: Support golden prospector kit (#13457)
+
+Robert (1):
+      chat colors: add color option for player's own name
+
+RuneLogApp (1):
+      music plugin: add null check to SettingsSideSlider icon on shutdown
+
+aHooder (1):
+      gpu: workaround for forced anti-aliasing
+
+emiljensen2 (1):
+      loot tracker: support tob lobby reward chest
+
+isaacph (1):
+      world hopper: add region filter config
+
+molo-pl (2):
+      clues: Support spirit angler's outfit (#13421)
+      menu entry swapper: add Tempoross leave swap
+
+superiorser9 (1):
+      wiki: only show vanilla wiki banner when enabled (#13380)
+</code></pre>
+</div>
+    </content>
+  </entry>
   
   <entry>
     <id>https://runelite.net/blog/show/2021-03-24-1.7.3-Release</id>
